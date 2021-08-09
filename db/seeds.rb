@@ -43,13 +43,31 @@ end
     Mynote.create(
         thankful: ["I am thankful for a full fridge.", "I am thankful for my laptop", "I am thankful for my family.", 
         "I am thankful that I have a job.", "I am thankful that I feel healthy.", "I am thankful I paid my bills this month."].sample,
-        notes: [Faker::Lorem.paragraph],
+        notes: Faker::Lorem.paragraph,
         user: [u1, u2, u3, u4, u5, u6].sample
     )
 end
 
+10.times do
+    Unitodo.create(
+        day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].sample,
+        entry1: Faker::Lorem.sentences,
+        entry2: Faker::Lorem.sentences,
+        entry3: Faker::Lorem.sentences,
+        entry4: Faker::Lorem.sentences,
+        entry5: Faker::Lorem.sentences,
+        entry6: Faker::Lorem.sentences,
+        entry7: Faker::Lorem.sentences,
+        entry8: Faker::Lorem.sentences,
+        entry9: Faker::Lorem.sentences,
+        entry10: Faker::Lorem.sentences,
+        user: [u1, u2, u3, u4, u5, u6].sample
 
-puts "User & Mytodo seeded"
+    )
+end
+
+
+puts "User & Et all seeded"
 
 puts "Seeded"
 
