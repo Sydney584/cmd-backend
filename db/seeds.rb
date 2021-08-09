@@ -1,6 +1,7 @@
 User.delete_all
 Mytodo.delete_all
 Mywin.delete_all
+Mynote.delete_all
 
 
 u1 = User.create(name: Faker::Name.name)
@@ -40,7 +41,10 @@ end
 
 10.times do
     Mynote.create(
-        thankful: ["I am thankful for a full fridge.", "I am thankful for my laptop", "I am thankful for my family.", "I am thankful that I have a job.", "I am thankful that I feel healthy.", "I am thankful I paid my bills this month."]
+        thankful: ["I am thankful for a full fridge.", "I am thankful for my laptop", "I am thankful for my family.", 
+        "I am thankful that I have a job.", "I am thankful that I feel healthy.", "I am thankful I paid my bills this month."].sample,
+        notes: [Faker::Lorem.paragraph],
+        user: [u1, u2, u3, u4, u5, u6].sample
     )
 end
 

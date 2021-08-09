@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_08_09_162520) do
 
+  create_table "mynotes", force: :cascade do |t|
+    t.string "thankful"
+    t.string "notes"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_mynotes_on_user_id"
+  end
+
   create_table "mytodos", force: :cascade do |t|
     t.string "day"
     t.string "affirmation"
@@ -35,13 +42,6 @@ ActiveRecord::Schema.define(version: 2021_08_09_162520) do
     t.string "text"
     t.integer "user_id"
     t.index ["user_id"], name: "index_mywins_on_user_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.string "thankful"
-    t.string "notes"
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
