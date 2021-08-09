@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_044535) do
+ActiveRecord::Schema.define(version: 2021_08_09_162520) do
 
   create_table "mytodos", force: :cascade do |t|
     t.string "day"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 2021_08_09_044535) do
     t.integer "tasks_completed"
     t.integer "user_id"
     t.index ["user_id"], name: "index_mytodos_on_user_id"
+  end
+
+  create_table "mywins", force: :cascade do |t|
+    t.string "text"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_mywins_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "thankful"
+    t.string "notes"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
