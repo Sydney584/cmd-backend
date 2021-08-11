@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_195520) do
+ActiveRecord::Schema.define(version: 2021_08_10_213444) do
 
   create_table "mynotes", force: :cascade do |t|
     t.string "thankful"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 2021_08_09_195520) do
     t.string "text"
     t.integer "user_id"
     t.index ["user_id"], name: "index_mywins_on_user_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.string "quote"
+    t.string "author"
+    t.string "img_url"
   end
 
   create_table "unitodos", force: :cascade do |t|
