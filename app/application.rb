@@ -37,14 +37,45 @@ class Application
     if req.path == ('/users') && req.post?
       body = JSON.parse(req.body.read)
       user = User.create(body)
-      return [201, {'Content-Type' => 'application/json'}, [user.to_json]]
+       return [201, {'Content-Type' => 'application/json'}, [user.to_json]]
     end
 
-    if req.path == ('/mytodos') && req.post?
+    
+    if req.path.match('/mytodos') && req.post?
+      id = req.path.split('/')[2]
       body = JSON.parse(req.body.read)
       mytodo = Mytodo.create(body)
-      return [201, {'Content-Type' => 'application/json'}, [mytodo.to_json]]
+      return [201, {'Content-Type' => 'application/json'}, [user.as_json(include: :mytodos).to_json]]
     end
+
+    # if req.path == ('/mytodos') && req.post?
+    #   body = JSON.parse(req.body.read)
+    #   mytodo = Mytodo.create(body)
+    #   return [201, {'Content-Type' => 'application/json'}, [mytodo.to_json]]
+    # end
+
+    if req.path.match('/unitodos') && req.post?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      unitodo = Unitodo.create(body)
+      return [201, {'Content-Type' => 'application/json'}, [user.as_json(include: :unitodos).to_json]]
+    end
+
+    if req.path.match('/mywins') && req.post?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      mywin = Mywin.create(body)
+      return [201, {'Content-Type' => 'application/json'}, [user.as_json(include: :mywins).to_json]]
+    end
+
+    if req.path.match('/mynotes') && req.post?
+      body = JSON.parse(req.body.read)
+      id = req.path.split('/')[2]
+      mynote = Mynote.create(body)
+      return [201, {'Content-Type' => 'application/json'}, [user.as_json(include: :mynotes).to_json]]
+    end
+
+    
 
     # Exerciser Show
    
@@ -71,6 +102,7 @@ class Application
       ]
     end
 
+
     
     # Exerciser Update
     if req.path.match('/users/') && req.put?
@@ -80,6 +112,42 @@ class Application
       user.update(body)
       
       return [202, {'Content-Type' => 'application/json'}, [user.to_json]]
+    end
+
+    if req.path.match('/mytodos/') && req.put?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      mytodo = Mytodo.find(id)
+      mytodo.update(body)
+      
+      return [202, {'Content-Type' => 'application/json'}, [user.as_json(include: :mytodos).to_json]]
+    end
+
+    if req.path.match('/unitodos/') && req.put?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      unitodo = Unitodo.find(id)
+      unitodo.update(body)
+      
+      return [202, {'Content-Type' => 'application/json'}, [user.as_json(include: :unitodos).to_json]]
+    end
+
+    if req.path.match('/mywins/') && req.put?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      mywin = Mywin.find(id)
+      mywin.update(body)
+      
+      return [202, {'Content-Type' => 'application/json'}, [user.as_json(include: :mywins).to_json]]
+    end
+
+    if req.path.match('/mynotes/') && req.put?
+      id = req.path.split('/')[2]
+      body = JSON.parse(req.body.read)
+      mynote = Mynote.find(id)
+      mynote.update(body)
+      
+      return [202, {'Content-Type' => 'application/json'}, [user.as_json(include: :mynotes).to_json]]
     end
 
 
@@ -92,6 +160,8 @@ class Application
         return [200, {'Content-Type' => 'application/json'}, [{message: "User Destroyed"}.to_json]]
       
     end
+
+   
 
      
      
