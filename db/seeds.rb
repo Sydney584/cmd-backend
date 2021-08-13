@@ -6,14 +6,17 @@ Mytodo.delete_all
 Mywin.delete_all
 Mynote.delete_all
 
-u1 = User.create(name: Faker::Name.name)
-u2 = User.create(name: Faker::Name.name)
-u3 = User.create(name: Faker::Name.name)
-u4 = User.create(name: Faker::Name.name)
+u1 = User.create(name: Faker::Name.name, gender: ['Female', 'Male', 'Them', 'Agender', 'Transgender Man', 'Transgender Woman' ].sample)
+u2 = User.create(name: Faker::Name.name, gender: ['Female', 'Male', 'Them', 'Agender', 'Transgender Man', 'Transgender Woman' ].sample)
+u3 = User.create(name: Faker::Name.name, gender: ['Female', 'Male', 'Them', 'Agender', 'Transgender Man', 'Transgender Woman' ].sample)
+u4 = User.create(name: Faker::Name.name, gender: ['Female', 'Male', 'Them', 'Agender', 'Transgender Man', 'Transgender Woman' ].sample)
 
 
 10.times do
-User.create name: Faker::Name.name
+User.create(
+    name: Faker::Name.name,
+    gender: ['Female', 'Male', 'Them', 'Agender', 'Transgender Man', 'Transgender Woman' ].sample
+)
 end
 
 
